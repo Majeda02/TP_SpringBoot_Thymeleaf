@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" th:href="@{/StyleIndex.css}">
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<div class="container" th:switch="${users}">
+    <div>
+        <div class="heading">Users</div>
+    </div>
+
+    <!-- empty state -->
+    <div class="empty-state" th:case="null">
+        <div class="subtext">No users yet!</div>
+        <a href="/signup" class="add-btn"><span class="plus">+</span> Add a new user</a>
+    </div>
+
+    <!-- table state -->
+    <div th:case="*">
+        <div class="table-wrap">
+            <table class="users-table">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}">
+                    <td data-label="Name" th:text="${user.name}">Name</td>
+                    <td data-label="Email" th:text="${user.email}">email@example.com</td>
+                    <td data-label="Edit">
+                        <a th:href="@{/edit/{id}(id=${user.id})}" class="action edit">Edit</a>
+                    </td>
+                    <td data-label="Delete">
+                        <a th:href="@{/delete/{id}(id=${user.id})}" class="action delete">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="text-align:center; margin-top:16px;">
+            <a href="/signup" class="add-btn"><span class="plus">+</span> Add a new user</a>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+/* users-style.css — modern, centered & colorful design */
+
+:root {
+  --bg: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+  --card: #ffffff;
+  --primary: #007bff;
+  --success: #28a745;
+  --success-dark: #1e7e34;
+  --danger: #dc3545;
+  --danger-dark: #a71d2a;
+  --text-dark: #212529;
+  --muted: #6c757d;
+  --shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --radius: 12px;
+}
+
+/* ---- Base ---- */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, sans-serif;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: var(--text-dark);
+}
+
+/* ---- Centered Form ---- */
+form {
+  background: var(--card);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius);
+  padding: 32px 40px;
+  width: 100%;
+  max-width: 420px;
+  text-align: left;
+  border: 1px solid #dee2e6;
+}
+
+form h2 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 15px;
+  margin-bottom: 14px;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+  outline: none;
+}
+
+span[th\\:errors] {
+  display: block;
+  color: var(--danger);
+  font-size: 13px;
+  margin-top: -8px;
+  margin-bottom: 10px;
+}
+
+/* ---- Buttons ---- */
+input[type="submit"],
+button,
+a.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+/* Add button (green) */
+.btn-add,
+input[type="submit"].btn-add {
+  background: var(--success);
+}
+.btn-add:hover,
+input[type="submit"].btn-add:hover {
+  background: var(--success-dark);
+}
+
+/* Delete button (red) */
+.btn-delete {
+  background: var(--danger);
+}
+.btn-delete:hover {
+  background: var(--danger-dark);
+}
+
+/* ---- Table ---- */
+.table-container {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background: var(--primary);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px;
+  font-size: 13px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+tr:nth-child(even) {
+  background: #f8f9fa;
+}
+
+tr:hover {
+  background: #e3f2fd;
+}
+
+/* ---- Topbar ---- */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.add-btn {
+  background: var(--success);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.add-btn:hover {
+  background: var(--success-dark);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 600px) {
+  form {
+    padding: 24px;
+  }
+  .table-container {
+    width: 100%;
+    padding: 10px;
+  }
+}

@@ -1,0 +1,194 @@
+/* Style1.css — version AGRANDIE pour index.html */
+
+/* Tokens / couleurs */
+:root{
+  --bg-top: #ffffff;
+  --bg-bottom: #f4f7fb;
+  --card-bg: #F8F9FD;
+  --accent-start: #1089d3;
+  --accent-end: #12b1d1;
+  --success: #28a745;
+  --danger: #e03a3a;
+  --muted: #aab0b8;
+  --text: #172033;
+  --radius-card: 28px;       /* légèrement réduit par rapport à 40 pour look plus professionnel */
+  --radius-pill: 24px;
+  --shadow-strong: rgba(133,189,215,0.13);
+  --max-width: 920px;       /* <-- plus large */
+  --pad-vertical: 42px;     /* plus d'espace vertical */
+  --pad-horizontal: 48px;   /* plus d'espace horizontal */
+}
+
+/* Reset */
+*{ box-sizing: border-box; margin:0; padding:0; }
+html,body{ height:100%; }
+body{
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+  color: var(--text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:100vh;
+  padding: 30px;
+}
+
+/* Container agrandi (carte) */
+.container {
+  width:100%;
+  max-width: var(--max-width);
+  background: linear-gradient(0deg, rgb(255,255,255) 0%, rgb(244,247,251) 100%);
+  border-radius: var(--radius-card);
+  padding: var(--pad-vertical) var(--pad-horizontal);
+  border: 6px solid rgb(255,255,255);
+  box-shadow: var(--shadow-strong) 0px 30px 40px -20px;
+  margin: 20px;
+  text-align: center;
+}
+
+/* Heading plus grand */
+.heading {
+  font-weight: 900;
+  font-size: 36px;   /* agrandi */
+  color: var(--accent-start);
+  margin-bottom: 6px;
+}
+
+/* Subtext */
+.subtext {
+  font-size: 18px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+/* Table wrapper */
+.table-wrap {
+  margin-top: 26px;
+  width: 100%;
+  overflow: auto;
+}
+
+/* TABLE — taille augmentée */
+.users-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: transparent;
+  font-size: 16px;    /* un peu plus grand */
+}
+.users-table thead th {
+  text-align:left;
+  font-size: 13px;
+  letter-spacing: 0.6px;
+  color: white;
+  padding: 14px 16px; /* plus d'espace */
+  background: linear-gradient(90deg, var(--accent-start), var(--accent-end));
+  border-radius: 8px;
+}
+.users-table td {
+  padding: 16px 18px;  /* lignes plus hautes */
+  border-bottom: 1px solid #eef3f7;
+  vertical-align: middle;
+  color: var(--text);
+}
+.users-table tr:nth-child(even) td {
+  background: rgba(17,98,152,0.03);
+}
+.users-table tr:hover td {
+  background: rgba(17,98,152,0.04);
+}
+
+/* Action pills (plus large) */
+.action {
+  display: inline-block;
+  padding: 10px 14px;     /* plus grand */
+  border-radius: 20px;
+  font-weight: 800;
+  font-size: 14px;
+  text-decoration: none;
+}
+.action.edit {
+  color: var(--accent-start);
+  background: rgba(16,137,211,0.06);
+}
+.action.delete {
+  color: var(--danger);
+  background: rgba(224,58,58,0.08);
+}
+
+/* Add button (grand, centré) */
+.add-btn {
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  margin-top: 26px;
+  background: linear-gradient(45deg, var(--accent-start), var(--accent-end));
+  color: white;
+  padding: 14px 22px;
+  border-radius: var(--radius-pill);
+  font-weight: 900;
+  text-decoration: none;
+  box-shadow: rgba(133,189,215,0.28) 0px 12px 26px -8px;
+  font-size: 16px;
+}
+.add-btn .plus {
+  background: white;
+  color: var(--accent-start);
+  display:inline-block;
+  width:36px;
+  height:36px;
+  line-height:36px;
+  border-radius:50%;
+  font-weight:900;
+  vertical-align:middle;
+}
+
+/* Empty state centré et plus grand */
+.empty-state {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding: 36px 12px;
+}
+.empty-state .subtext {
+  font-size:20px;
+  color: var(--muted);
+}
+
+/* Responsive: table -> card rows on small screens */
+@media (max-width: 900px) {
+  :root {
+    --max-width: 720px;
+    --pad-horizontal: 36px;
+  }
+}
+@media (max-width: 680px) {
+  .container { padding: 22px; border-radius: 20px; }
+  .users-table, .users-table thead, .users-table tbody, .users-table th, .users-table td, .users-table tr {
+    display:block;
+  }
+  .users-table thead{ display:none; }
+  .users-table tr {
+    margin-bottom:12px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 6px 16px rgba(17,98,152,0.03);
+    padding: 10px;
+  }
+  .users-table td {
+    display:flex;
+    justify-content:space-between;
+    padding: 10px;
+    border-bottom: none;
+  }
+  .users-table td::before {
+    content: attr(data-label);
+    font-weight:700;
+    color: var(--muted);
+    margin-right: 12px;
+  }
+
+  .add-btn { width:100%; padding: 12px; justify-content:center; }
+  .heading { font-size: 26px; }
+}
